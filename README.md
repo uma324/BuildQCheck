@@ -1,134 +1,210 @@
 # 🏗️ BuildQCheck (BuildZone QA Monitor)
 
-## 📖 About
+## 📖 About the Project
 
-BuildQCheck is a comprehensive Android application designed for construction field workers and site managers.
-It enables real-time quality inspections, issue reporting, material compliance checks, and site progress tracking using Firebase Firestore.
+BuildQCheck is an Android application developed to simplify **construction site monitoring and quality assurance**.
+The idea behind this app is to help **site engineers, supervisors, and field workers** manage construction activities efficiently without relying on manual paperwork.
+
+tracking quality checks, reporting issues, and maintaining site data can be time-consuming and error-prone. This app solves that problem by providing a **centralized, digital solution** where users can monitor site progress, perform quality inspections, and report issues in real time.
+
+The application is fully integrated with **Firebase**, enabling secure authentication and real-time database updates.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-### 🔐 Authentication
+### 🔐 User Authentication
 
-* Email/password login & signup
-* Forgot password support
-* Email verification via Firebase
+The app provides a secure authentication system using Firebase:
+
+* Email and password login/signup
+* Password recovery functionality
+* Email verification for added security
+
+---
 
 ### 🏠 Dashboard
 
-* Grid-based home screen
-* Quick access to Add Site, Site List, Feedback, About
+The home screen is designed with simplicity in mind:
 
-### 📋 Site Management
-
-* Add, update, and manage construction sites
-* Supports Residential / Commercial / Industrial
-
-### ✅ Quality Check
-
-* Radio-based quality quiz
-* Covers: Bricks, Steel, Concrete, Waterproofing, Wiring, Plaster, Fire Door
-
-### ⚠️ Issue Reporting
-
-* Log safety/quality issues
-* Category dropdown + description
-* Stored in Firebase
-
-### 📊 Site Details
-
-* Detailed site overview
-* Status:
-
-  * 🟢 Active
-  * 🔵 Completed
-  * 🟡 To Start
-
-### 📚 Material Reference
-
-* IS 456:2000
-* NBC 2016
-
-### 💬 Feedback
-
-* Star rating + comments
-
-### 👤 Profile
-
-* View account
-* Logout & delete account
+* Clean grid layout for easy navigation
+* Quick access to core modules like site management, feedback, and materials info
 
 ---
 
-## 🗂️ App Navigation
+### 📋 Site Management
 
-```
-HomeScreen
-├── AddSiteScreen
-├── SiteListScreen
-│   └── SiteDetailsScreen
-│       ├── SiteActionsScreen
-│       │   ├── CheckQualityScreen
-│       │   └── ReportIssueScreen
-├── MaterialInfoFragment
-├── FeedbackScreen
-├── AboutScreen
-└── ProfileFragment
+Users can manage multiple construction sites efficiently:
+
+* Add new site details (type, budget, materials, timeline)
+* View all registered sites in a structured list
+* Update site progress and status
+
+Supports different types of projects:
+
+* Residential
+* Commercial
+* Industrial
+
+---
+
+### ✅ Quality Inspection System
+
+A unique feature of the app is the built-in **quality assessment module**:
+
+* Interactive radio-based questionnaire
+* Covers key construction components such as:
+
+  * Bricks
+  * Steel
+  * Concrete
+  * Waterproofing
+  * Wiring
+  * Plaster
+  * Fire safety
+
+This helps ensure that construction standards are being followed consistently.
+
+---
+
+### ⚠️ Issue Reporting
+
+Users can quickly report any problems observed on-site:
+
+* Select issue category (safety/quality)
+* Add detailed description
+* Data is stored in Firebase Firestore
+
+This enables better tracking and accountability.
+
+---
+
+### 📊 Site Details & Status Tracking
+
+Each site includes a detailed overview with clear status indicators:
+
+* 🟢 Active
+* 🔵 Completed
+* 🟡 To Start
+
+This helps users quickly understand project progress at a glance.
+
+---
+
+### 📚 Material Standards Reference
+
+The app also includes a reference section for construction standards:
+
+* IS 456:2000 (Concrete standards)
+* NBC 2016 guidelines
+
+These are displayed through simple popup windows for quick access during inspections.
+
+---
+
+### 💬 Feedback System
+
+Users can provide feedback directly within the app:
+
+* Star-based rating system
+* Optional text comments
+* Stored in Firebase for analysis
+
+---
+
+### 👤 User Profile
+
+Basic profile management features include:
+
+* View account information
+* Logout
+* Delete account
+
+---
+
+## 🗂️ Application Flow
+
+```text
+Home Screen
+│
+├── Add Site → Register new construction site
+├── Site List → View all sites
+│   └── Site Details → Detailed site information
+│       ├── Quality Check → Perform inspection
+│       └── Report Issue → Log problems
+│
+├── Material Info → View construction standards
+├── Feedback → Submit user feedback
+├── About → App information
+└── Profile → Account management
 ```
 
 ---
 
 ## 🛠️ Tech Stack
 
-* Language: Kotlin
-* UI: XML + View Binding
-* Architecture: Activity + Fragment
-* Backend: Firebase Firestore, Firebase Auth
+This project is built using modern Android development tools:
+
+* **Language:** Kotlin
+* **UI Design:** XML layouts with View Binding
+* **Architecture:** Activity + Fragment-based structure
+* **Backend:** Firebase
+
+  * Firebase Authentication
+  * Cloud Firestore
+
+Additional components used:
+
+* RecyclerView for lists
+* Spinner (ArrayAdapter) for dropdowns
+* PopupWindow for material info
+* Toast messages for user feedback
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 🔧 Requirements
 
-* Android Studio Flamingo+
+* Android Studio (Flamingo or newer)
 * Android SDK 24+
-* Firebase project
-
-### Firebase Setup
-
-* Add `google-services.json` to `/app`
-* Enable Authentication (Email/Password)
-* Enable Firestore
+* Firebase project setup
 
 ---
+
 
 ## 📁 Project Structure
 
-```
+```text
 app/src/main/java/com/example/bqc/
-├── SplashScreen.kt
-├── SignIn.kt
-├── SignUp.kt
-├── MainActivity.kt
-├── AddSite.kt
-├── SiteList.kt
-├── SiteDetails.kt
-├── QualityQuiz.kt
-├── ReportIssues.kt
-└── Feedback.kt
+├── Authentication (SignIn, SignUp, ForgotPassword)
+├── MainActivity & Navigation
+├── Home & Fragments
+├── Site Management (AddSite, SiteList, SiteDetails)
+├── Quality & Reporting (QualityQuiz, ReportIssues)
+└── Feedback & About
 ```
 
 ---
 
-## 🔥 Firebase Collections
+## 🔥 Firebase Database Design
 
-```
-sites/
-feedback/
-report/
-```
+The app uses structured Firestore collections:
+
+* **sites** → Stores all site-related information
+* **feedback** → Stores user ratings and comments
+* **report** → Stores reported issues
+
+---
+
+## 💡 What I Learned
+
+While building this project, I gained hands-on experience in:
+
+* Designing real-world Android applications
+* Working with Firebase Authentication & Firestore
+* Structuring multi-screen apps using Activities & Fragments
+* Implementing user-friendly UI/UX for practical use cases
 
 ---
 
